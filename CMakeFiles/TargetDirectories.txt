@@ -1,0 +1,4 @@
+/home/twak/code/cw2/CMakeFiles/rebuild_cache.dir
+/home/twak/code/cw2/CMakeFiles/cw2.dir
+/home/twak/code/cw2/CMakeFiles/edit_cache.dir
+/home/twak/code/cw2/CMakeFiles/cw2_autogen.dir
