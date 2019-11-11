@@ -27,7 +27,7 @@ private:
     std::vector<TheButtonInfo>* infos;
     std::vector<TheButton*>* buttons;
     QTimer* mTimer;
-    long count = 0;
+    long updateCount = 0;
 
 public:
     ThePlayer() : QMediaPlayer(NULL) {
@@ -35,11 +35,9 @@ public:
         connect (this, SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (printState(QMediaPlayer::State)) );
 
         mTimer = new QTimer(NULL);
-        mTimer->setSingleShot(false);
-        mTimer->setInterval(300);
+        mTimer->setInterval(1000); // 1000ms is one second between ...
         mTimer->start();
-
-        connect( mTimer, SIGNAL (timeout()), SLOT ( shuffle() ) );
+        connect( mTimer, SIGNAL (timeout()), SLOT ( shuffle() ) ); // ...running shuffle method
     }
 
     void setContent(std::vector<TheButton*>* b, std::vector<TheButtonInfo>* i){
@@ -52,7 +50,9 @@ public:
 private slots:
 
     void shuffle() {
-        buttons -> at( count++ % buttons->size() ) -> init( & infos -> at (rand() % infos->size() ) );
+        TheButtonInfo* i = & infos -> at (rand() % infos->size() );
+//        setMedia(*i->url);
+        buttons -> at( updateCount++ % buttons->size() ) -> init( i );
     }
 
     void printState (QMediaPlayer::State ms) {
