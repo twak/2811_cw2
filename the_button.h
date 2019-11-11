@@ -8,21 +8,44 @@
 
 #include <QtWidgets/QPushButton>
 #include <QtMultimediaWidgets/QVideoWidget>
+#include <QtCore/QUrl>
+//#include "the_player.h"
+
+
+class TheButtonInfo {
+
+public:
+    QUrl* url; // video file to play
+    QIcon* icon; // icon to display
+
+    TheButtonInfo ( QUrl* url, QIcon* icon) : url (url), icon (icon) {}
+};
 
 class TheButton : public QPushButton {
+    Q_OBJECT
 
 public:
 
-    QUrl *video;
+    TheButtonInfo* info;
 
-     TheButton(QWidget *parent, QVideoWidget *pWidget) :  QPushButton(parent) {
-
+     TheButton(QWidget *parent) :  QPushButton(parent) {
+         setIconSize(QSize(200,200));
+         connect(this, SIGNAL(released()), this, SLOT (clicked() )); // if QPushButton clicked...then run clicked() below
     }
 
-    void init(QUrl &url) {
-
+    void init(TheButtonInfo* i) {
+        setIcon( *(i->icon) );
+        info =  i;
     }
+
+public slots:
+    void clicked() {
+        emit jumpTo(info);
+    }
+
+signals:
+    void jumpTo(TheButtonInfo*);
+
 };
-
 
 #endif //CW2_THE_BUTTON_H
