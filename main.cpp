@@ -76,16 +76,15 @@ int main(int argc, char *argv[]) {
 
     std::vector<TheButton*> buttons;
 
-    for (int i = 0; i < 3; i++) {
+    for ( int i = 0; i < 4; i++ ) {
         TheButton *button = new TheButton(buttonWidget);
-        button->connect(button, SIGNAL(jumpTo(TheButtonInfo* )), player,
-                        SLOT (jumpTo(TheButtonInfo* ))); // when clicked, tell the player to play.
+        button->connect(button, SIGNAL(jumpTo(TheButtonInfo* )), player, SLOT (jumpTo(TheButtonInfo* ))); // when clicked, tell the player to play.
         buttons.push_back(button);
         layout->addWidget(button);
         button->init(&videos.at(i));
     }
 
-    player->setContent(&buttons);
+    player->setContent(&buttons, & videos);
 
     QWidget window;
     QVBoxLayout *hb = new QVBoxLayout();
