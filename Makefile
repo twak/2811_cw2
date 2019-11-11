@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/85/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/92/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/85/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/92/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/twak/code/cw2
+CMAKE_SOURCE_DIR = /home/twak/code/2811_cw2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/twak/code/cw2
+CMAKE_BINARY_DIR = /home/twak/code/2811_cw2
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/twak/code/cw2
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/85/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/92/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/85/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/92/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/twak/code/cw2/CMakeFiles /home/twak/code/cw2/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/twak/code/2811_cw2/CMakeFiles /home/twak/code/2811_cw2/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/twak/code/cw2/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/twak/code/2811_cw2/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -163,113 +163,86 @@ cw2_autogen/mocs_compilation.cpp.s:
 	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/cw2_autogen/mocs_compilation.cpp.s
 .PHONY : cw2_autogen/mocs_compilation.cpp.s
 
-responsive_label.o: responsive_label.cpp.o
+main.o: main.cpp.o
 
-.PHONY : responsive_label.o
-
-# target to build an object file
-responsive_label.cpp.o:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/responsive_label.cpp.o
-.PHONY : responsive_label.cpp.o
-
-responsive_label.i: responsive_label.cpp.i
-
-.PHONY : responsive_label.i
-
-# target to preprocess a source file
-responsive_label.cpp.i:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/responsive_label.cpp.i
-.PHONY : responsive_label.cpp.i
-
-responsive_label.s: responsive_label.cpp.s
-
-.PHONY : responsive_label.s
-
-# target to generate assembly for a file
-responsive_label.cpp.s:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/responsive_label.cpp.s
-.PHONY : responsive_label.cpp.s
-
-responsive_layout.o: responsive_layout.cpp.o
-
-.PHONY : responsive_layout.o
+.PHONY : main.o
 
 # target to build an object file
-responsive_layout.cpp.o:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/responsive_layout.cpp.o
-.PHONY : responsive_layout.cpp.o
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-responsive_layout.i: responsive_layout.cpp.i
+main.i: main.cpp.i
 
-.PHONY : responsive_layout.i
+.PHONY : main.i
 
 # target to preprocess a source file
-responsive_layout.cpp.i:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/responsive_layout.cpp.i
-.PHONY : responsive_layout.cpp.i
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-responsive_layout.s: responsive_layout.cpp.s
+main.s: main.cpp.s
 
-.PHONY : responsive_layout.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-responsive_layout.cpp.s:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/responsive_layout.cpp.s
-.PHONY : responsive_layout.cpp.s
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/main.cpp.s
+.PHONY : main.cpp.s
 
-responsive_window.o: responsive_window.cpp.o
+the_button.o: the_button.cpp.o
 
-.PHONY : responsive_window.o
+.PHONY : the_button.o
 
 # target to build an object file
-responsive_window.cpp.o:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/responsive_window.cpp.o
-.PHONY : responsive_window.cpp.o
+the_button.cpp.o:
+	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/the_button.cpp.o
+.PHONY : the_button.cpp.o
 
-responsive_window.i: responsive_window.cpp.i
+the_button.i: the_button.cpp.i
 
-.PHONY : responsive_window.i
+.PHONY : the_button.i
 
 # target to preprocess a source file
-responsive_window.cpp.i:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/responsive_window.cpp.i
-.PHONY : responsive_window.cpp.i
+the_button.cpp.i:
+	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/the_button.cpp.i
+.PHONY : the_button.cpp.i
 
-responsive_window.s: responsive_window.cpp.s
+the_button.s: the_button.cpp.s
 
-.PHONY : responsive_window.s
+.PHONY : the_button.s
 
 # target to generate assembly for a file
-responsive_window.cpp.s:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/responsive_window.cpp.s
-.PHONY : responsive_window.cpp.s
+the_button.cpp.s:
+	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/the_button.cpp.s
+.PHONY : the_button.cpp.s
 
-screenshot.o: screenshot.cpp.o
+the_player.o: the_player.cpp.o
 
-.PHONY : screenshot.o
+.PHONY : the_player.o
 
 # target to build an object file
-screenshot.cpp.o:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/screenshot.cpp.o
-.PHONY : screenshot.cpp.o
+the_player.cpp.o:
+	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/the_player.cpp.o
+.PHONY : the_player.cpp.o
 
-screenshot.i: screenshot.cpp.i
+the_player.i: the_player.cpp.i
 
-.PHONY : screenshot.i
+.PHONY : the_player.i
 
 # target to preprocess a source file
-screenshot.cpp.i:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/screenshot.cpp.i
-.PHONY : screenshot.cpp.i
+the_player.cpp.i:
+	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/the_player.cpp.i
+.PHONY : the_player.cpp.i
 
-screenshot.s: screenshot.cpp.s
+the_player.s: the_player.cpp.s
 
-.PHONY : screenshot.s
+.PHONY : the_player.s
 
 # target to generate assembly for a file
-screenshot.cpp.s:
-	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/screenshot.cpp.s
-.PHONY : screenshot.cpp.s
+the_player.cpp.s:
+	$(MAKE) -f CMakeFiles/cw2.dir/build.make CMakeFiles/cw2.dir/the_player.cpp.s
+.PHONY : the_player.cpp.s
 
 # Help Target
 help:
@@ -284,18 +257,15 @@ help:
 	@echo "... cw2_autogen/mocs_compilation.o"
 	@echo "... cw2_autogen/mocs_compilation.i"
 	@echo "... cw2_autogen/mocs_compilation.s"
-	@echo "... responsive_label.o"
-	@echo "... responsive_label.i"
-	@echo "... responsive_label.s"
-	@echo "... responsive_layout.o"
-	@echo "... responsive_layout.i"
-	@echo "... responsive_layout.s"
-	@echo "... responsive_window.o"
-	@echo "... responsive_window.i"
-	@echo "... responsive_window.s"
-	@echo "... screenshot.o"
-	@echo "... screenshot.i"
-	@echo "... screenshot.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... the_button.o"
+	@echo "... the_button.i"
+	@echo "... the_button.s"
+	@echo "... the_player.o"
+	@echo "... the_player.i"
+	@echo "... the_player.s"
 .PHONY : help
 
 

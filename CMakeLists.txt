@@ -15,10 +15,10 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories (${CMAKE_BINARY_DIR})
 
-find_package(Qt5 COMPONENTS Widgets Multimedia MultimediaWidgets Network Xml REQUIRED)
+find_package(Qt5 COMPONENTS Widgets Multimedia MultimediaWidgets Network Xml Gui REQUIRED)
 #find_package(Qt5Multimedia REQUIRED)
 
-set(SOURCE_FILES responsive_layout.cpp responsive_layout.h responsive_label.cpp responsive_label.h responsive_window.cpp responsive_window.h screenshot.cpp screenshot.h)
+set(SOURCE_FILES main.cpp the_player.cpp the_player.h the_button.cpp the_button.h)
 add_executable(cw2 ${SOURCE_FILES})
 
-target_link_libraries(cw2 Qt5::Widgets Qt5::Multimedia Qt5::MultimediaWidgets Qt5::Network Qt5::Xml)
+target_link_libraries(cw2 Qt5::Widgets Qt5::Multimedia Qt5::MultimediaWidgets Qt5::Network Qt5::Xml Qt5::Gui)

@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/85/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/92/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/85/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/92/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/twak/code/cw2
+CMAKE_SOURCE_DIR = /home/twak/code/2811_cw2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/twak/code/cw2
+CMAKE_BINARY_DIR = /home/twak/code/2811_cw2
 
 # Utility rule file for cw2_autogen.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/twak/code/cw2
 include CMakeFiles/cw2_autogen.dir/progress.make
 
 CMakeFiles/cw2_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/twak/code/cw2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target cw2"
-	/snap/clion/85/bin/cmake/linux/bin/cmake -E cmake_autogen /home/twak/code/cw2/CMakeFiles/cw2_autogen.dir/AutogenInfo.cmake Debug
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/twak/code/2811_cw2/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target cw2"
+	/snap/clion/92/bin/cmake/linux/bin/cmake -E cmake_autogen /home/twak/code/2811_cw2/CMakeFiles/cw2_autogen.dir/AutogenInfo.cmake ""
 
 cw2_autogen: CMakeFiles/cw2_autogen
 cw2_autogen: CMakeFiles/cw2_autogen.dir/build.make
@@ -72,6 +72,6 @@ CMakeFiles/cw2_autogen.dir/clean:
 .PHONY : CMakeFiles/cw2_autogen.dir/clean
 
 CMakeFiles/cw2_autogen.dir/depend:
-	cd /home/twak/code/cw2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/twak/code/cw2 /home/twak/code/cw2 /home/twak/code/cw2 /home/twak/code/cw2 /home/twak/code/cw2/CMakeFiles/cw2_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/twak/code/2811_cw2 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/twak/code/2811_cw2 /home/twak/code/2811_cw2 /home/twak/code/2811_cw2 /home/twak/code/2811_cw2 /home/twak/code/2811_cw2/CMakeFiles/cw2_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cw2_autogen.dir/depend
 

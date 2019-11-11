@@ -4,11 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/twak/code/cw2/cw2_autogen/mocs_compilation.cpp" "/home/twak/code/cw2/CMakeFiles/cw2.dir/cw2_autogen/mocs_compilation.cpp.o"
-  "/home/twak/code/cw2/responsive_label.cpp" "/home/twak/code/cw2/CMakeFiles/cw2.dir/responsive_label.cpp.o"
-  "/home/twak/code/cw2/responsive_layout.cpp" "/home/twak/code/cw2/CMakeFiles/cw2.dir/responsive_layout.cpp.o"
-  "/home/twak/code/cw2/responsive_window.cpp" "/home/twak/code/cw2/CMakeFiles/cw2.dir/responsive_window.cpp.o"
-  "/home/twak/code/cw2/screenshot.cpp" "/home/twak/code/cw2/CMakeFiles/cw2.dir/screenshot.cpp.o"
+  "/home/twak/code/2811_cw2/cw2_autogen/mocs_compilation.cpp" "/home/twak/code/2811_cw2/CMakeFiles/cw2.dir/cw2_autogen/mocs_compilation.cpp.o"
+  "/home/twak/code/2811_cw2/main.cpp" "/home/twak/code/2811_cw2/CMakeFiles/cw2.dir/main.cpp.o"
+  "/home/twak/code/2811_cw2/the_button.cpp" "/home/twak/code/2811_cw2/CMakeFiles/cw2.dir/the_button.cpp.o"
+  "/home/twak/code/2811_cw2/the_player.cpp" "/home/twak/code/2811_cw2/CMakeFiles/cw2.dir/the_player.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -19,6 +18,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "QT_MULTIMEDIAWIDGETS_LIB"
   "QT_MULTIMEDIA_LIB"
   "QT_NETWORK_LIB"
+  "QT_NO_DEBUG"
   "QT_WIDGETS_LIB"
   "QT_XML_LIB"
   )
@@ -27,15 +27,15 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "cw2_autogen/include"
   "."
-  "/home/twak/anaconda3/include/qt"
-  "/home/twak/anaconda3/include/qt/QtWidgets"
-  "/home/twak/anaconda3/include/qt/QtGui"
-  "/home/twak/anaconda3/include/qt/QtCore"
-  "/home/twak/anaconda3/./mkspecs/linux-g++"
-  "/home/twak/anaconda3/include/qt/QtMultimedia"
-  "/home/twak/anaconda3/include/qt/QtNetwork"
-  "/home/twak/anaconda3/include/qt/QtMultimediaWidgets"
-  "/home/twak/anaconda3/include/qt/QtXml"
+  "/usr/include/x86_64-linux-gnu/qt5"
+  "/usr/include/x86_64-linux-gnu/qt5/QtWidgets"
+  "/usr/include/x86_64-linux-gnu/qt5/QtGui"
+  "/usr/include/x86_64-linux-gnu/qt5/QtCore"
+  "/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"
+  "/usr/include/x86_64-linux-gnu/qt5/QtMultimedia"
+  "/usr/include/x86_64-linux-gnu/qt5/QtNetwork"
+  "/usr/include/x86_64-linux-gnu/qt5/QtMultimediaWidgets"
+  "/usr/include/x86_64-linux-gnu/qt5/QtXml"
   )
 
 # Targets to which this target links.
