@@ -1,6 +1,14 @@
-//
-// Created by twak on 14/10/2019.
-//
+/*
+ *
+ *    ______
+ *   /_  __/___  ____ ___  ___  ____
+ *    / / / __ \/ __ `__ \/ _ \/ __ \
+ *   / / / /_/ / / / / / /  __/ /_/ /
+ *  /_/  \____/_/ /_/ /_/\___/\____/
+ *              video for no reason
+ *
+ * 2811 cw2 November 2019 by twak
+ */
 
 #include <iostream>
 #include <QApplication>
@@ -17,29 +25,32 @@
 #include "the_player.h"
 #include "the_button.h"
 
+
 using namespace std;
 
+// read in videos and thumbnails to this directory
 vector<TheButtonInfo> getInfoIn (string loc) {
 
     vector<TheButtonInfo> out =  vector<TheButtonInfo>();
     QDir dir(QString::fromStdString(loc) );
     QDirIterator it(dir);
 
-    while (it.hasNext()) {
+    while (it.hasNext()) { // for all files
 
         QString f = it.next();
 
-        if (!f.contains(".png")) {
+        if (!f.contains(".png")) { // if it isn't an image
             QString thumb = f.left( f .length() - 4) +".png";
-            if (QFile(thumb).exists()) {
+            if (QFile(thumb).exists()) { // but a png thumbnail exists
                 QImageReader *imageReader = new QImageReader(thumb);
-                    QImage sprite = imageReader->read();
+                    QImage sprite = imageReader->read(); // read the thumbnail
                     if (!sprite.isNull()) {
-                        QIcon* ico = new QIcon(QPixmap::fromImage(sprite));
-
-                        QUrl* url = new QUrl(QUrl::fromLocalFile( f ));
-                        out . push_back(TheButtonInfo( url , ico  ) );
+                        QIcon* ico = new QIcon(QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
+                        QUrl* url = new QUrl(QUrl::fromLocalFile( f )); // convert the file location to a generic url
+                        out . push_back(TheButtonInfo( url , ico  ) ); // add to the output list
                     }
+                    else
+                        cerr << "warning: skipping video because I couldn't process thumbnail " << thumb.toStdString() << endl;
             }
             else
                 cerr << "warning: skipping video because I couldn't find thumbnail " << thumb.toStdString() << endl;
@@ -58,24 +69,31 @@ int main(int argc, char *argv[]) {
     // create the Qt Application
     QApplication app(argc, argv);
 
-    vector<TheButtonInfo> videos = getInfoIn("/home/twak/Videos/cw2");
+    // collect all the videos in the folder
+    vector<TheButtonInfo> videos = getInfoIn("/tmp/2811_videos");
 
-    for (TheButtonInfo bi : videos) {
-        cout << bi.url->toString().toStdString() << endl;
-        cout << bi.icon->isNull() << endl;
+    if (videos.size() == 0) {
+        cerr << "no videos found: download from https://vcg.leeds.ac.uk/wp-content/static/2811/the/videos.zip into /tmp/2811_videos";
+        exit(-1);
     }
 
+    // the widget that will show the video
     QVideoWidget *videoWidget = new QVideoWidget;
 
+    // the QMediaPlayer which controls the playback
     ThePlayer *player = new ThePlayer;
     player->setVideoOutput(videoWidget);
 
+    // a row of buttons
     QWidget *buttonWidget = new QWidget();
+    // a list of the buttons
+    std::vector<TheButton*> buttons;
+    // the buttons are arranged horizontally
     QHBoxLayout *layout = new QHBoxLayout();
     buttonWidget->setLayout(layout);
 
-    std::vector<TheButton*> buttons;
 
+    // create the four buttons
     for ( int i = 0; i < 4; i++ ) {
         TheButton *button = new TheButton(buttonWidget);
         button->connect(button, SIGNAL(jumpTo(TheButtonInfo* )), player, SLOT (jumpTo(TheButtonInfo* ))); // when clicked, tell the player to play.
@@ -84,19 +102,22 @@ int main(int argc, char *argv[]) {
         button->init(&videos.at(i));
     }
 
+    // tell the player what buttons and videos are available
     player->setContent(&buttons, & videos);
 
+    // create the main window and layout
     QWidget window;
-    QVBoxLayout *hb = new QVBoxLayout();
-    hb->setContentsMargins(0, 0, 0, 0);
-    window.setLayout(hb);
-    window.setFixedSize(800, 680);
+    QVBoxLayout *top = new QVBoxLayout();
+    window.setLayout(top);
+    window.setWindowTitle("tomeo");
+    window.setMinimumSize(800, 680);
 
-    hb->addWidget(videoWidget);
-    hb->addWidget(buttonWidget);
+    // add the video and the buttons to the top level widget
+    top->addWidget(videoWidget);
+    top->addWidget(buttonWidget);
 
+    // showtime!
     window.show();
-
 
     // wait for the app to terminate
     return app.exec();

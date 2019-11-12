@@ -8,11 +8,6 @@
 
 #include <QApplication>
 #include <QMediaPlayer>
-#include <QtWidgets/QGraphicsScene>
-#include <QtMultimediaWidgets/QGraphicsVideoItem>
-#include <QtMultimediaWidgets/QVideoWidget>
-#include <QMediaPlaylist>
-#include <QtWidgets/QPushButton>
 #include "the_button.h"
 #include <vector>
 #include <QTimer>
@@ -32,7 +27,7 @@ private:
 public:
     ThePlayer() : QMediaPlayer(NULL) {
         setVolume(0); // be slightly less annoying
-        connect (this, SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (printState(QMediaPlayer::State)) );
+        connect (this, SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (playStateChanged(QMediaPlayer::State)) );
 
         mTimer = new QTimer(NULL);
         mTimer->setInterval(1000); // 1000ms is one second between ...
@@ -40,36 +35,20 @@ public:
         connect( mTimer, SIGNAL (timeout()), SLOT ( shuffle() ) ); // ...running shuffle method
     }
 
-    void setContent(std::vector<TheButton*>* b, std::vector<TheButtonInfo>* i){
-        buttons = b;
-        infos = i;
-
-        jumpTo(buttons -> at(0) -> info);
-    }
+    // all buttons have been setup, store pointers here
+    void setContent(std::vector<TheButton*>* b, std::vector<TheButtonInfo>* i);
 
 private slots:
 
-    void shuffle() {
-        TheButtonInfo* i = & infos -> at (rand() % infos->size() );
-//        setMedia(*i->url);
-        buttons -> at( updateCount++ % buttons->size() ) -> init( i );
-    }
+    // change the image and video for one button every one second
+    void shuffle();
 
-    void printState (QMediaPlayer::State ms) {
-        switch (ms) {
-            case QMediaPlayer::State::StoppedState:
-                play(); // play again again
-        }
-    }
+    void playStateChanged (QMediaPlayer::State ms);
 
 public slots:
 
-    void jumpTo (TheButtonInfo* button) {
-        setMedia( * button -> url);
-        play();
-    }
+    // start playing this ButtonInfo
+    void jumpTo (TheButtonInfo* button);
 };
-
-
 
 #endif //CW2_THE_PLAYER_H

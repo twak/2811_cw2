@@ -7,9 +7,6 @@
 
 
 #include <QtWidgets/QPushButton>
-#include <QtMultimediaWidgets/QVideoWidget>
-#include <QtCore/QUrl>
-//#include "the_player.h"
 
 
 class TheButtonInfo {
@@ -25,7 +22,6 @@ class TheButton : public QPushButton {
     Q_OBJECT
 
 public:
-
     TheButtonInfo* info;
 
      TheButton(QWidget *parent) :  QPushButton(parent) {
@@ -33,15 +29,10 @@ public:
          connect(this, SIGNAL(released()), this, SLOT (clicked() )); // if QPushButton clicked...then run clicked() below
     }
 
-    void init(TheButtonInfo* i) {
-        setIcon( *(i->icon) );
-        info =  i;
-    }
+    void init(TheButtonInfo* i);
 
-public slots:
-    void clicked() {
-        emit jumpTo(info);
-    }
+private slots:
+    void clicked();
 
 signals:
     void jumpTo(TheButtonInfo*);
