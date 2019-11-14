@@ -19,8 +19,8 @@ class ThePlayer : public QMediaPlayer {
 Q_OBJECT
 
 private:
-    std::vector<TheButtonInfo>* infos;
-    std::vector<TheButton*>* buttons;
+    vector<TheButtonInfo>* infos;
+    vector<TheButton*>* buttons;
     QTimer* mTimer;
     long updateCount = 0;
 
@@ -36,7 +36,7 @@ public:
     }
 
     // all buttons have been setup, store pointers here
-    void setContent(std::vector<TheButton*>* b, std::vector<TheButtonInfo>* i);
+    void setContent(vector<TheButton*>* b, vector<TheButtonInfo>* i);
 
 private slots:
 

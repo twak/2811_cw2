@@ -15,6 +15,7 @@
 #include <QtMultimediaWidgets/QVideoWidget>
 #include <QMediaPlaylist>
 #include <string>
+#include <vector>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QHBoxLayout>
 #include <QtCore/QFileInfo>
@@ -70,10 +71,16 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
     // collect all the videos in the folder
-    vector<TheButtonInfo> videos = getInfoIn("/tmp/2811_videos");
+
+    vector<TheButtonInfo> videos;
+
+    if (argc == 1)
+        videos = getInfoIn(  "/tmp/XXX/");
+    else
+        videos = getInfoIn( string(argv[1]) );
 
     if (videos.size() == 0) {
-        cerr << "no videos found: download from https://vcg.leeds.ac.uk/wp-content/static/2811/the/videos.zip into /tmp/2811_videos";
+        cerr << "no videos found! download from https://vcg.leeds.ac.uk/wp-content/static/2811/the/videos.zip into /tmp/XXX, and update the code on line 77";
         exit(-1);
     }
 
@@ -87,7 +94,7 @@ int main(int argc, char *argv[]) {
     // a row of buttons
     QWidget *buttonWidget = new QWidget();
     // a list of the buttons
-    std::vector<TheButton*> buttons;
+    vector<TheButton*> buttons;
     // the buttons are arranged horizontally
     QHBoxLayout *layout = new QHBoxLayout();
     buttonWidget->setLayout(layout);

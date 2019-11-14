@@ -135,9 +135,6 @@
 		<Unit filename="/home/twak/code/2811_cw2/cw2_autogen/mocs_compilation.cpp">
 			<Option target="cw2"/>
 		</Unit>
-		<Unit filename="/home/twak/code/2811_cw2/main.cpp">
-			<Option target="cw2"/>
-		</Unit>
 		<Unit filename="/home/twak/code/2811_cw2/the_button.cpp">
 			<Option target="cw2"/>
 		</Unit>
@@ -148,6 +145,9 @@
 			<Option target="cw2"/>
 		</Unit>
 		<Unit filename="/home/twak/code/2811_cw2/the_player.h">
+			<Option target="cw2"/>
+		</Unit>
+		<Unit filename="/home/twak/code/2811_cw2/tomeo.cpp">
 			<Option target="cw2"/>
 		</Unit>
 		<Unit filename="/home/twak/code/2811_cw2/CMakeLists.txt">

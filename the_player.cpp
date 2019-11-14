@@ -4,6 +4,8 @@
 
 #include "the_player.h"
 
+using namespace std;
+
 // all buttons have been setup, store pointers here
 void ThePlayer::setContent(std::vector<TheButton*>* b, std::vector<TheButtonInfo>* i){
     buttons = b;
@@ -21,9 +23,7 @@ void ThePlayer::shuffle() {
 void ThePlayer::playStateChanged (QMediaPlayer::State ms) {
     switch (ms) {
         case QMediaPlayer::State::StoppedState:
-            // play some other video
-            setMedia( *infos -> at (rand() % infos->size() ).url);
-            play(); // starting playing again
+            play(); // starting playing again...
     }
 }
 
