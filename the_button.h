@@ -6,7 +6,8 @@
 #define CW2_THE_BUTTON_H
 
 
-#include <QtWidgets/QPushButton>
+#include <QPushButton>
+#include <QUrl>
 
 
 class TheButtonInfo {

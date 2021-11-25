@@ -12,22 +12,20 @@
 #include <vector>
 #include <QTimer>
 
-using namespace std;
-
 class ThePlayer : public QMediaPlayer {
 
 Q_OBJECT
 
 private:
-    vector<TheButtonInfo>* infos;
-    vector<TheButton*>* buttons;
+    std::vector<TheButtonInfo>* infos;
+    std::vector<TheButton*>* buttons;
     QTimer* mTimer;
     long updateCount = 0;
 
 public:
     ThePlayer() : QMediaPlayer(NULL) {
-        setVolume(0); // be slightly less annoying
-        connect (this, SIGNAL (stateChanged(QMediaPlayer::State)), this, SLOT (playStateChanged(QMediaPlayer::State)) );
+//        setVolume(0); // be slightly less annoying
+        connect (this, SIGNAL (stateChanged(QMediaPlayer::PlaybackState)), this, SLOT (playStateChanged(QMediaPlayer::PlaybackState)) );
 
         mTimer = new QTimer(NULL);
         mTimer->setInterval(1000); // 1000ms is one second between ...
@@ -36,14 +34,14 @@ public:
     }
 
     // all buttons have been setup, store pointers here
-    void setContent(vector<TheButton*>* b, vector<TheButtonInfo>* i);
+    void setContent(std::vector<TheButton*>* b, std::vector<TheButtonInfo>* i);
 
 private slots:
 
     // change the image and video for one button every one second
     void shuffle();
 
-    void playStateChanged (QMediaPlayer::State ms);
+    void playStateChanged (QMediaPlayer::PlaybackState ms);
 
 public slots:
 
