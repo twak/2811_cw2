@@ -1,14 +1,12 @@
-/*
- *
- *    ______
- *   /_  __/___  ____ ___  ___  ____
- *    / / / __ \/ __ `__ \/ _ \/ __ \
- *   / / / /_/ / / / / / /  __/ /_/ /
- *  /_/  \____/_/ /_/ /_/\___/\____/
- *              video for no reason
- *
- * 2811 cw2 November 2019 by twak
- */
+//    ______
+//   /_  __/___  ____ ___  ___  ____
+//    / / / __ \/ __ `__ \/ _ \/ __ \
+//   / / / /_/ / / / / / /  __/ /_/ /
+//  /_/  \____/_/ /_/ /_/\___/\____/
+//              video for sports enthusiasts...
+//
+//  2811 cw3 : twak 11/11/2021
+//
 
 #include <iostream>
 #include <QApplication>
@@ -20,19 +18,18 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtCore/QFileInfo>
 #include <QtWidgets/QFileIconProvider>
+#include <QDesktopServices>
 #include <QImageReader>
+#include <QMessageBox>
 #include <QtCore/QDir>
 #include <QtCore/QDirIterator>
 #include "the_player.h"
 #include "the_button.h"
 
-
-using namespace std;
-
 // read in videos and thumbnails to this directory
-vector<TheButtonInfo> getInfoIn (string loc) {
+std::vector<TheButtonInfo> getInfoIn (std::string loc) {
 
-    vector<TheButtonInfo> out =  vector<TheButtonInfo>();
+    std::vector<TheButtonInfo> out =  std::vector<TheButtonInfo>();
     QDir dir(QString::fromStdString(loc) );
     QDirIterator it(dir);
 
@@ -40,9 +37,16 @@ vector<TheButtonInfo> getInfoIn (string loc) {
 
         QString f = it.next();
 
-        if (!f.contains(".png")) { // if it isn't an image
+            if (f.contains("."))
+
+#if defined(_WIN32)
+            if (f.contains(".wmv"))  { // windows
+#else
+            if (f.contains(".mp4") || f.contains("MOV"))  { // mac/linux
+#endif
+
             QString thumb = f.left( f .length() - 4) +".png";
-            if (QFile(thumb).exists()) { // but a png thumbnail exists
+            if (QFile(thumb).exists()) { // if a png thumbnail exists
                 QImageReader *imageReader = new QImageReader(thumb);
                     QImage sprite = imageReader->read(); // read the thumbnail
                     if (!sprite.isNull()) {
@@ -51,10 +55,10 @@ vector<TheButtonInfo> getInfoIn (string loc) {
                         out . push_back(TheButtonInfo( url , ico  ) ); // add to the output list
                     }
                     else
-                        cerr << "warning: skipping video because I couldn't process thumbnail " << thumb.toStdString() << endl;
+                        qDebug() << "warning: skipping video because I couldn't process thumbnail " << thumb << endl;
             }
             else
-                cerr << "warning: skipping video because I couldn't find thumbnail " << thumb.toStdString() << endl;
+                qDebug() << "warning: skipping video because I couldn't find thumbnail " << thumb << endl;
         }
     }
 
@@ -65,22 +69,34 @@ vector<TheButtonInfo> getInfoIn (string loc) {
 int main(int argc, char *argv[]) {
 
     // let's just check that Qt is operational first
-    cout << "Qt version: " << QT_VERSION_STR << endl;
+    qDebug() << "Qt version: " << QT_VERSION_STR << endl;
 
     // create the Qt Application
     QApplication app(argc, argv);
 
     // collect all the videos in the folder
+    std::vector<TheButtonInfo> videos;
 
-    vector<TheButtonInfo> videos;
-
-    if (argc == 1)
-        videos = getInfoIn(  "/tmp/XXX/");
-    else
-        videos = getInfoIn( string(argv[1]) );
+    if (argc == 2)
+        videos = getInfoIn( std::string(argv[1]) );
 
     if (videos.size() == 0) {
-        cerr << "no videos found! download from https://vcg.leeds.ac.uk/wp-content/static/2811/the/videos.zip into /tmp/XXX, and update the code on line 77";
+
+        const int result = QMessageBox::question(
+                    NULL,
+                    QString("Tomeo"),
+                    QString("no videos found! download, unzip, and add command line argument to \"quoted\" file location. Download videos from Tom's OneDrive?"),
+                    QMessageBox::Yes |
+                    QMessageBox::No );
+
+        switch( result )
+        {
+        case QMessageBox::Yes:
+          QDesktopServices::openUrl(QUrl("https://leeds365-my.sharepoint.com/:u:/g/personal/scstke_leeds_ac_uk/EcGntcL-K3JOiaZF4T_uaA4BHn6USbq2E55kF_BTfdpPag?e=n1qfuN"));
+          break;
+        default:
+            break;
+        }
         exit(-1);
     }
 
@@ -94,7 +110,7 @@ int main(int argc, char *argv[]) {
     // a row of buttons
     QWidget *buttonWidget = new QWidget();
     // a list of the buttons
-    vector<TheButton*> buttons;
+    std::vector<TheButton*> buttons;
     // the buttons are arranged horizontally
     QHBoxLayout *layout = new QHBoxLayout();
     buttonWidget->setLayout(layout);
@@ -103,7 +119,7 @@ int main(int argc, char *argv[]) {
     // create the four buttons
     for ( int i = 0; i < 4; i++ ) {
         TheButton *button = new TheButton(buttonWidget);
-        button->connect(button, SIGNAL(jumpTo(TheButtonInfo* )), player, SLOT (jumpTo(TheButtonInfo* ))); // when clicked, tell the player to play.
+        button->connect(button, SIGNAL(jumpTo(TheButtonInfo* )), player, SLOT (jumpTo(TheButtonInfo*))); // when clicked, tell the player to play.
         buttons.push_back(button);
         layout->addWidget(button);
         button->init(&videos.at(i));
