@@ -85,14 +85,14 @@ int main(int argc, char *argv[]) {
         const int result = QMessageBox::question(
                     NULL,
                     QString("Tomeo"),
-                    QString("no videos found! download, unzip, and add command line argument to \"quoted\" file location. Download videos from Tom's OneDrive?"),
+                    QString("no videos found! download, unzip, and add command line argument to \"quoted\" file location. Download videos?"),
                     QMessageBox::Yes |
                     QMessageBox::No );
 
         switch( result )
         {
         case QMessageBox::Yes:
-          QDesktopServices::openUrl(QUrl("https://leeds365-my.sharepoint.com/:u:/g/personal/scstke_leeds_ac_uk/EcGntcL-K3JOiaZF4T_uaA4BHn6USbq2E55kF_BTfdpPag?e=n1qfuN"));
+          QDesktopServices::openUrl(QUrl("https://github.com/twak/2811_cw2/tree/master/videos"));
           break;
         default:
             break;
